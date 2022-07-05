@@ -1,21 +1,12 @@
-import { useState } from "react";
-import logo from "@/assets/images/logo.svg";
+import Router from "@/routers/index";
+import { HashRouter } from "react-router-dom";
 
-function App() {
-	const [count, setCount] = useState(0);
+const App = () => {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>Hello Vite + React!1111</p>
-				<p>
-					<button type="button" onClick={() => setCount(count => count + 1)}>
-						count is: {count}
-					</button>
-				</p>
-			</header>
-		</div>
+		<HashRouter>
+			<Router />
+		</HashRouter>
 	);
-}
+};
 
 export default App;
