@@ -13,7 +13,7 @@
 		"lint:stylelint": "stylelint --cache --fix \"**/*.{less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
 		"lint:lint-staged": "lint-staged",
 		"prepare": "husky install",
-		"commit": "git pull && git add -A && git-cz"
+		"commit": "git-cz"
 	},
 	"dependencies": {
 		"react": "^18.0.0",
