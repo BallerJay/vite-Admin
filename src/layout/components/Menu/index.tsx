@@ -16,25 +16,29 @@ const LayoutMenu = () => {
 			icon: <HomeOutlined />
 		},
 		{
-			label: <Link to="/dataScreen">数据大屏</Link>,
+			label: <Link to="/datascreen">数据大屏</Link>,
 			key: "/dataScreen",
 			icon: <AreaChartOutlined />
 		},
 		{
-			label: <Link to="/table/useHooks">超级表格</Link>,
+			label: <Link to="/protable/useHooks">超级表格</Link>,
 			icon: <TableOutlined />,
-			path: "/proTable",
+			path: "/protable",
 			children: [
 				{
-					label: <Link to="/table/useHooks">使用hooks</Link>,
-					key: "/table/useHooks"
+					label: <Link to="/protable/useHooks">使用hooks</Link>,
+					key: "/protable/useHooks"
+				},
+				{
+					label: <Link to="/protable/usecomponent">使用Component</Link>,
+					key: "/protable/usecompoennt"
 				}
 			]
 		}
 	];
 
 	const onClick: MenuProps["onClick"] = e => {
-		console.log("click ", e);
+		// console.log("click ", e);
 		setCurrent(e.key);
 	};
 
@@ -49,15 +53,7 @@ const LayoutMenu = () => {
 				items={menuList}
 				selectedKeys={[current]}
 				onClick={onClick}
-			>
-				{/* {menuList.map(item => {
-					return (
-						<Menu.Item key={item.path} icon={item.icon}>
-							<Link to={item.path}>{item.title}</Link>
-						</Menu.Item>
-					);
-				})} */}
-			</Menu>
+			></Menu>
 		</div>
 	);
 };

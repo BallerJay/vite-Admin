@@ -3,7 +3,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Layout } from "antd";
 import LayoutMenu from "./components/Menu";
 import LayoutHeader from "./components/Header";
-// import LayoutTabs from "./components/Tabs";
 import LayoutFooter from "./components/Footer";
 import "./index.scss";
 

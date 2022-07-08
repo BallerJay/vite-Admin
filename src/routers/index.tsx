@@ -1,8 +1,7 @@
+import React from "react";
 import { useRoutes, Navigate, RouteObject } from "react-router-dom";
 import NotFound from "@/components/ErrorMessage/404";
-import LayoutIndex from "@/layout/index";
-import Login from "@/views/login/index";
-import Home from "@/views/home/index";
+import lazyLoad from "./lazyLoad";
 
 const rootRouter: RouteObject[] = [
 	{
@@ -11,14 +10,27 @@ const rootRouter: RouteObject[] = [
 	},
 	{
 		path: "/login",
-		element: <Login />
+		element: lazyLoad(React.lazy(() => import("@/views/login/index")))
 	},
+
 	{
-		element: <LayoutIndex name="我是参数" />,
+		element: lazyLoad(React.lazy(() => import("@/layout/index"))),
 		children: [
 			{
 				path: "/home",
-				element: <Home />
+				element: lazyLoad(React.lazy(() => import("@/views/home/index")))
+			},
+			{
+				path: "/protable/usehooks",
+				element: lazyLoad(React.lazy(() => import("@/views/proTable/useHooks/index")))
+			},
+			{
+				path: "/protable/usecomponent",
+				element: lazyLoad(React.lazy(() => import("@/views/proTable/useComponent/index")))
+			},
+			{
+				path: "/datascreen",
+				element: lazyLoad(React.lazy(() => import("@/views/dataScreen/index")))
 			}
 		]
 	},
