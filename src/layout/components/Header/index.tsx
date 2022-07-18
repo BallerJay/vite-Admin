@@ -1,7 +1,9 @@
 import { Layout } from "antd";
+
 import AvatarIcon from "./components/AvatarIcon";
 import CollapseIcon from "./components/CollapseIcon";
 import BreadcrumbNav from "./components/BreadcurmbNav";
+
 import "./index.scss";
 
 const { Header } = Layout;
