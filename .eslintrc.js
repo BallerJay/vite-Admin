@@ -31,9 +31,9 @@ module.exports = {
 		"plugin:react/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:react/jsx-runtime",
-		"plugin:react-hooks/recommended"
-		// "prettier",
-		// "plugin:prettier/recommended"
+		"plugin:react-hooks/recommended",
+		"prettier",
+		"plugin:prettier/recommended"
 	],
 	/*
 	 * "off" 或 0    ==>  关闭规则

@@ -1,21 +1,24 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { connect } from "react-redux";
 import { Layout } from "antd";
+
 import LayoutMenu from "./components/Menu";
 import LayoutHeader from "./components/Header";
 import LayoutFooter from "./components/Footer";
+
 import "./index.scss";
 
 const { Sider, Content } = Layout;
 
-const LayoutIndex = (props: { name: string }) => {
-	console.log(props);
+const LayoutIndex = (props: any) => {
+	// console.log(props);
 
 	const { pathname } = useLocation();
 
 	return (
 		<Layout>
-			<Sider trigger={null} collapsible collapsed={false}>
+			<Sider trigger={null} collapsed={props.isCollapse}>
 				<LayoutMenu></LayoutMenu>
 			</Sider>
 			<Layout>
@@ -35,4 +38,8 @@ const LayoutIndex = (props: { name: string }) => {
 	);
 };
 
-export default LayoutIndex;
+export default connect((state: any) => {
+	return {
+		isCollapse: state.menuReducer.isCollapse
+	};
+})(LayoutIndex);
