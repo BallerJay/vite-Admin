@@ -5,10 +5,12 @@ import storage from "redux-persist/lib/storage";
 
 import menuReducer from "./modules/menu/menuReducer";
 import globalReducer from "./modules/global/globalReducer";
+import breadcrumbReducer from "./modules/breadcrumb/breadcrumbReducer";
 
 const reducer = combineReducers({
 	menuReducer,
-	globalReducer
+	globalReducer,
+	breadcrumbReducer
 });
 
 // redux 持久化配置

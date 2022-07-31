@@ -1,39 +1,29 @@
 import React from "react";
-import { useRoutes, Navigate, RouteObject } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 import NotFound from "@/components/ErrorMessage/404";
-import lazyLoad from "./lazyLoad";
+import LazyLoad from "@/components/LazyLoad";
+import { RouteObj } from "./interface";
 
-const rootRouter: RouteObject[] = [
+const AllRouters = import.meta.globEager("./modules/*.tsx");
+
+// 处理路由
+const routersArray: RouteObj[] = [];
+Object.keys(AllRouters).forEach(item => {
+	Object.keys(AllRouters[item]).forEach((key: any) => {
+		routersArray.push(...AllRouters[item][key]);
+	});
+});
+
+const rootRouter: RouteObj[] = [
 	{
 		path: "/",
-		element: <Navigate to="/home" />
+		element: <Navigate to="/home/index" />
 	},
 	{
 		path: "/login",
-		element: lazyLoad(React.lazy(() => import("@/views/login/index")))
+		element: LazyLoad(React.lazy(() => import("@/views/login/index")))
 	},
-
-	{
-		element: lazyLoad(React.lazy(() => import("@/layout/index"))),
-		children: [
-			{
-				path: "/home",
-				element: lazyLoad(React.lazy(() => import("@/views/home/index")))
-			},
-			{
-				path: "/protable/usehooks",
-				element: lazyLoad(React.lazy(() => import("@/views/proTable/useHooks/index")))
-			},
-			{
-				path: "/protable/usecomponent",
-				element: lazyLoad(React.lazy(() => import("@/views/proTable/useComponent/index")))
-			},
-			{
-				path: "/datascreen",
-				element: lazyLoad(React.lazy(() => import("@/views/dataScreen/index")))
-			}
-		]
-	},
+	...routersArray,
 	{
 		path: "*",
 		element: <NotFound />

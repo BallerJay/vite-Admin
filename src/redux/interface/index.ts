@@ -19,3 +19,10 @@ export interface GlobalState {
 	language: string;
 	themeConfig: ThemeConfigProp;
 }
+
+/* BreadcrumbState */
+export interface BreadcrumbState {
+	breadcrumbList: {
+		[key: string]: any;
+	};
+}
