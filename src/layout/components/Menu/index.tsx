@@ -106,6 +106,10 @@ const LayoutMenu = (props: any) => {
 		getMenuData();
 	}, []);
 
+	useEffect(() => {
+		setSelectedKeys([pathname]);
+	}, [pathname]);
+
 	return (
 		<div className="menu">
 			<Spin spinning={loading} tip="Loading...">

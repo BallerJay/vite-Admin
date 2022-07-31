@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 const BreadcrumbNav = (props: any) => {
-	console.log(props);
 	const { pathname } = useLocation();
 	const breadcrumbList = props.breadcrumbList[pathname] || [];
 
@@ -11,7 +10,6 @@ const BreadcrumbNav = (props: any) => {
 		<Breadcrumb>
 			<Breadcrumb.Item href={"#/home/index"}>首页</Breadcrumb.Item>
 			{breadcrumbList.map((item: string) => {
-				console.log(item);
 				return <Breadcrumb.Item key={item}>{item !== "首页" ? item : null}</Breadcrumb.Item>;
 			})}
 		</Breadcrumb>
